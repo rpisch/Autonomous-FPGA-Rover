@@ -206,6 +206,7 @@ always @(posedge clock) begin
 	fcountL = fcountL + 1;
 	scounterR = scounterR + 1;
 	scounterL = scounterL + 1;
+	dcounter = dcounter + 1;
 
 	//shift the signal into debounce_sig up to 8 bits
 	debounce_sig1[0] = signalleftred;
@@ -244,10 +245,10 @@ always @(posedge clock) begin
 	// output the shifted count and reset values counts to 0
 	if (fcountR >= (countToR >> 4)) begin
 		freq_outR = right_red_freq_count << 3;// >> 1;			
-		freq_outR = blue_freq_count << 3;// >> 1;			
+		//freq_outR = blue_freq_count << 3;// >> 1;			
 		fcountR = 0;
 		right_red_freq_count = 0;		
-		blue_freq_count = 0;
+		//blue_freq_count = 0;
 		avClkR = avClkR + 1;
 	end
 	
